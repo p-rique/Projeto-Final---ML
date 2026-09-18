@@ -10,8 +10,6 @@ from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import (accuracy_score, confusion_matrix, ConfusionMatrixDisplay, classification_report, precision_score)
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
 
 sns.set_theme(style = 'whitegrid') # Tema para a visualização
 
@@ -222,3 +220,4 @@ precisao_forest = precision_score(
 )
 
 print("Precisão do Random Forest Classifier: ", precisao_forest)
+## A precisão do modelo é igual a 1.0, então, o modelo está performando bem.
