@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 from sklearn.datasets import load_wine
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import (accuracy_score, confusion_matrix, ConfusionMatrixDisplay, classification_report)
+from sklearn.metrics import (accuracy_score, confusion_matrix, ConfusionMatrixDisplay, classification_report, precision_score)
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
@@ -199,3 +199,26 @@ print("Acurácia do Random Forest Classifier: ", acuracia_forest)
 
 ## Alcançamos uma acurácia igual a 1.0, mas precisamos veriicar se o modelo está overfitting.
 
+# Aplicando validação cruzada para verificar o desempenho do modelo (Random Forest)
+
+scores = cross_val_score(
+    modelo_forest,
+    X,
+    y,
+    cv = 5 # Número de divisões para a validação cruzada
+)
+
+print("Resultados das divisões" , scores)
+print("Acurácia média do modelo: ", scores.mean())
+## Acurácia média igual a 0.972, sendo maior que a acurácia do modelo Decision tree.
+## Além disso, a acurácia média é menor que 1.0, então, não está overitting.
+
+# Testando a precisão do modelo (Random Forest)
+
+precisao_forest = precision_score(
+    y_test,
+    previsoes_forest,
+    average = "weighted"
+)
+
+print("Precisão do Random Forest Classifier: ", precisao_forest)
