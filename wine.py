@@ -42,6 +42,7 @@ print(df.describe())
 
 # Análise e visualização dos dados
 ## Gráfico de barras do número de amostras por classe
+
 print("Classes:", wine.target_names)
 print(df["target"].value_counts().sort_index())
 
@@ -95,7 +96,7 @@ modelo_tree = DecisionTreeClassifier(
 
 modelo_tree.fit(X_train, y_train)
 
-#print("Modelo treinado!") # Verificando se o modelo foi treinado
+print("Modelo treinado!") # Verificando se o modelo foi treinado
 
 # Avaliando o modelo (Decision Tree)
 ## Previsões do modelo (Decision Tree)
@@ -167,7 +168,7 @@ plt.legend()
 plt.show()
 
 ## Com base nos resultados do gráfico, a profundidade ideal para o modelo é 3, onde alcança o máximo desempenho sem overfitting.
-## Buscando uma acurácia maior, vamos tentar usar outro modelo
+## Buscando uma acurácia maior, vamos tentar usar outro modelo:
 
 # Testando o Random Forest Classifier
 
