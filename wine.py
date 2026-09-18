@@ -8,6 +8,7 @@ import seaborn as sns
 from sklearn.datasets import load_wine
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import (accuracy_score, confusion_matrix, ConfusionMatrixDisplay, classification_report)
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
@@ -168,3 +169,33 @@ plt.legend()
 plt.show()
 
 ## Com base nos resultados do gráfico, a profundidade ideal para o modelo é 3, onde alcança o máximo desempenho sem overfitting.
+## Buscando uma acurácia maior, vamos tentar usar outro modelo
+
+# Testando o Random Forest Classifier
+
+modelo_forest = RandomForestClassifier(
+    n_estimators = 100,
+    max_depth = 5,
+    random_state = 42
+)
+
+# Treinando o modelo (Random Forest)
+
+modelo_forest = modelo_forest.fit(X_train, y_train)
+
+# Avaliando o modelo (Random Forest)
+## Previsões do modelo (Random Forest)
+
+previsoes_forest = modelo_forest.predict(X_test)
+
+## Acurácia do modelo (Random Forest)
+
+acuracia_forest = accuracy_score(
+    y_test,
+    previsoes_forest
+)
+
+print("Acurácia do Random Forest Classifier: ", acuracia_forest)
+
+## Alcançamos uma acurácia igual a 1.0, mas precisamos veriicar se o modelo está overfitting.
+
